@@ -1,0 +1,24 @@
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews -Indexes
+    </IfModule>
+
+    RewriteEngine On
+
+    # Handle Authorization Header
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+    # Redirect Trailing Slashes If Not A Folder...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} (.+)/$
+    RewriteRule ^ %1 [L,R=301]
+
+    # Allow direct access only to real static asset files
+    RewriteCond %{REQUEST_URI} \.(?:css|js|jpe?g|gif|png|webp|svg|ico|woff2?|ttf|eot|mp4|webm|map)$ [NC]
+    RewriteRule ^ - [L]
+
+    # Send all page and API requests to Front Controller...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^ index.php [L]
+</IfModule>

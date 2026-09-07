@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Master Stylists & Artists — Elegance Salon</title>
+  <meta name="description" content="Meet our resident team of editorial hair stylists, colorists, beauty directors, nail artists, and aesthetic therapists.">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css"><link rel="stylesheet" href="css/dashboard.css"><link rel="stylesheet" href="css/responsive.css">
+</head>
+<body data-page="stylists">
+  <div class="section">
+    <div class="container">
+      <div style="max-width:640px; margin-bottom:28px">
+        <span class="eyebrow">The Atelier Team</span>
+        <h1 style="margin-bottom:8px">Master Stylists & Artists</h1>
+        <p style="font-size:1.05rem">Editorial-trained specialists dedicated to precision cuts, couture color, and bridal artistry.</p>
+      </div>
+
+      <div class="filters" style="margin-bottom:28px; background:var(--surface); padding:16px 20px; border-radius:18px; border:1px solid var(--line); box-shadow:var(--shadow-sm)">
+        <select id="st-spec" style="min-width:200px"></select>
+        <select id="st-rating" style="min-width:140px">
+          <option value="0">All Ratings</option>
+          <option value="4.8">4.8+ Stars</option>
+          <option value="4.9">4.9+ Stars</option>
+        </select>
+        <select id="st-avail" style="min-width:160px">
+          <option>Any Availability</option>
+          <option>Today</option>
+        </select>
+      </div>
+
+      <div class="grid-3" id="stylist-grid"></div>
+    </div>
+  </div>
+  <script src="js/mock-data.js"></script><script src="js/store.js"></script><script src="js/app.js"></script><script src="js/layout.js"></script><script src="js/main.js"></script>
+  <script>Layout.public("stylists");</script>
+</body>
+</html>

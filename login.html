@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login — Elegance Salon</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css"><link rel="stylesheet" href="css/responsive.css">
+</head>
+<body data-page="login">
+  <div class="auth-split">
+    <div class="auth-visual">
+      <img src="assets/images/login/login.1.jpg" alt="Makeup artist preparing a guest">
+      <div class="auth-copy">
+        <a class="logo" href="index.html">
+          <svg class="logo-svg-mark" viewBox="0 0 42 42" width="40" height="40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs>
+              <linearGradient id="loginLogoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#e4c382" />
+                <stop offset="50%" stop-color="#b8924a" />
+                <stop offset="100%" stop-color="#8c6a2d" />
+              </linearGradient>
+            </defs>
+            <circle cx="21" cy="21" r="19" stroke="url(#loginLogoGrad)" stroke-width="1.2" opacity="0.85" />
+            <circle cx="21" cy="21" r="16.5" stroke="url(#loginLogoGrad)" stroke-width="0.6" stroke-dasharray="2.5 1.5" opacity="0.45" />
+            <path d="M 13.5 12.5 C 13.5 12.5, 26.5 12.5, 27.5 12.5 C 28.5 12.5, 29 13.2, 28 14 C 26.5 15.2, 20.5 15.5, 17 15.5 L 17 20 C 19.5 20, 24 19.8, 25.5 20.5 C 26.5 21, 26 22, 24.5 22.2 C 22.5 22.5, 17 22.5, 17 22.5 L 17 27 C 20.5 27, 26.8 26.8, 28.2 28 C 29.2 28.8, 28.5 29.5, 27 29.5 C 24 29.5, 13.5 29.5, 13.5 29.5 C 12.5 29.5, 12 28.5, 12 21 C 12 13.5, 12.5 12.5, 13.5 12.5 Z" fill="url(#loginLogoGrad)" />
+            <path d="M 24 10.5 C 27.5 13, 29.5 17, 29.5 21 C 29.5 25.5, 27 29.5, 23 31.8" stroke="url(#loginLogoGrad)" stroke-width="1.2" stroke-linecap="round" fill="none" opacity="0.75" />
+            <path d="M 21 6 L 21.8 7.8 L 23.5 8.5 L 21.8 9.2 L 21 11 L 20.2 9.2 L 18.5 8.5 L 20.2 7.8 Z" fill="url(#loginLogoGrad)" />
+          </svg>
+          <div class="logo-text-wrap">
+            <span class="logo-brand-main" style="color:#ffffff">ELEGANCE</span>
+            <span class="logo-brand-sub" style="color:var(--gold)">SALON</span>
+          </div>
+        </a>
+        <h2>Welcome back to the atelier</h2>
+        <p>Sign in to manage appointments, invoices, and your preferred chair.</p>
+      </div>
+    </div>
+    <div class="auth-panel">
+      <form class="auth-card" method="POST" action="login" id="login-form">
+        <a href="index.html" class="eyebrow">← Back to site</a>
+        <div class="row-between" style="align-items: center; margin-bottom: 0.4em;">
+          <h1 style="margin: 0;">Sign in</h1>
+          <button type="button" class="icon-btn" data-theme-toggle aria-label="Toggle theme"><i class="fa-solid fa-moon"></i></button>
+        </div>
+        <div class="field"><label for="email">Email Address</label><input id="email" name="email" type="email" required autocomplete="username"><div class="field-error">Required</div></div>
+        <div class="field"><label for="password">Password</label>
+          <div class="password-wrap">
+            <input id="password" name="password" type="password" required autocomplete="current-password">
+            <button type="button" class="icon-btn" data-toggle-password="#password" aria-label="Show password"><i class="fa-solid fa-eye"></i></button>
+          </div>
+          <div class="field-error">Required</div>
+        </div>
+        <div class="row-between">
+          <label class="check"><input type="checkbox" name="remember"> Remember me</label>
+          <a href="forgot-password.html">Forgot password?</a>
+        </div>
+        <p id="login-error" class="field-error" style="display:none">Invalid email or password.</p>
+        <button class="btn btn-gold btn-block" style="margin:16px 0" type="submit">Login</button>
+        <p>Don't have an account? <a href="register.html">Create Account</a></p>
+      </form>
+    </div>
+  </div>
+  <script src="js/mock-data.js"></script><script src="js/store.js"></script><script src="js/app.js"></script><script src="js/main.js"></script>
+</body>
+</html>

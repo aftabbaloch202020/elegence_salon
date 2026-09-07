@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us — Elegance Salon</title>
+  <meta name="description" content="Connect with Elegance Salon on MM Alam Road, Gulberg III, Lahore. Direct phone, concierge email, opening hours, and location.">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css"><link rel="stylesheet" href="css/dashboard.css"><link rel="stylesheet" href="css/responsive.css">
+</head>
+<body data-page="contact">
+  <section class="section contact-section" id="contact-page">
+    <div class="container contact-grid">
+      <!-- LEFT SIDE: Contact Info Card -->
+      <div class="contact-info-card">
+        <span class="eyebrow">CONCIERGE & INQUIRIES</span>
+        <h1 class="contact-title">Contact Us</h1>
+        <p class="contact-lead">Our atelier concierge team is at your disposal for luxury appointments, bridal consultations, and private suite reservations.</p>
+
+        <div class="contact-details-list">
+          <div class="contact-detail-item">
+            <div class="contact-icon"><i class="fa-solid fa-location-dot"></i></div>
+            <div class="contact-text">
+              <span class="contact-label">Salon Address</span>
+              <strong>12-B MM Alam Road, Gulberg III, Lahore</strong>
+            </div>
+          </div>
+
+          <div class="contact-detail-item">
+            <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
+            <div class="contact-text">
+              <span class="contact-label">Phone Number</span>
+              <strong>+92 321 555 0180 / +92 42 3578 9900</strong>
+            </div>
+          </div>
+
+          <div class="contact-detail-item">
+            <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
+            <div class="contact-text">
+              <span class="contact-label">Email Address</span>
+              <strong>hello@elegancesalon.com</strong>
+            </div>
+          </div>
+
+          <div class="contact-detail-item">
+            <div class="contact-icon"><i class="fa-solid fa-clock"></i></div>
+            <div class="contact-text">
+              <span class="contact-label">Opening Hours</span>
+              <strong>Mon–Thu: 10:00 AM – 8:00 PM<br>Fri–Sat: 10:00 AM – 9:00 PM<br>Sun: 11:00 AM – 6:00 PM</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-socials-wrap">
+          <span class="contact-label" style="display:block; margin-bottom:10px">Follow Our Atelier</span>
+          <div class="socials">
+            <a href="https://instagram.com/elegance.salon" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://facebook.com/elegancesalon" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://wa.me/923215550180" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT SIDE: Contact Form Card -->
+      <form class="card panel contact-form-card" id="contact-form">
+        <span class="eyebrow">DIRECT MESSAGE</span>
+        <h2 class="form-title">Send Us a Message</h2>
+        
+        <div class="field">
+          <label for="n">Your Name</label>
+          <input id="n" type="text" required placeholder="Full Name">
+          <div class="field-error">Please enter your name</div>
+        </div>
+
+        <div class="field">
+          <label for="e">Email Address</label>
+          <input id="e" type="email" required placeholder="name@example.com">
+          <div class="field-error">Please enter a valid email address</div>
+        </div>
+
+        <div class="field">
+          <label for="p">Phone Number</label>
+          <input id="p" type="tel" required placeholder="+92 300 0000000">
+          <div class="field-error">Please enter your phone number</div>
+        </div>
+
+        <div class="field">
+          <label for="s">Subject</label>
+          <input id="s" type="text" required placeholder="Bridal booking, hair query, etc.">
+          <div class="field-error">Please enter a subject</div>
+        </div>
+
+        <div class="field">
+          <label for="m">Message</label>
+          <textarea id="m" required placeholder="Tell us how we can assist you..."></textarea>
+          <div class="field-error">Please enter your message</div>
+        </div>
+
+        <button class="btn btn-gold btn-block submit-btn" type="submit">
+          <i class="fa-solid fa-paper-plane"></i> Send Message
+        </button>
+      </form>
+    </div>
+  </section>
+  <script src="js/mock-data.js"></script><script src="js/store.js"></script><script src="js/app.js"></script><script src="js/layout.js"></script><script src="js/main.js"></script>
+  <script>Layout.public("contact");</script>
+</body>
+</html>

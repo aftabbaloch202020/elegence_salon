@@ -1,0 +1,123 @@
+#!/usr/bin/env php
+<?php
+
+/**
+ * Elegance Salon — Laravel Artisan Console Runner
+ */
+
+define('LARAVEL_START', microtime(true));
+
+$args = array_slice($argv, 1);
+$command = $args[0] ?? 'help';
+
+function print_artisan_banner() {
+    echo "\n\033[33m  ______ _                                _____       _             \n";
+    echo " |  ____| |                             / ____|     | |            \n";
+    echo " | |__  | | ___  __ _  __ _ _ __   ___ ___ | (___   __ _| | ___  _ __  \n";
+    echo " |  __| | |/ _ \/ _` |/ _` | '_ \ / __/ _ \ \___ \ / _` | |/ _ \| '_ \ \n";
+    echo " | |____| |  __/ (_| | (_| | | | | (_|  __/ ____) | (_| | | (_) | | | |\n";
+    echo " |______|_|\___|\__, |\__,_|_| |_|\___\___||_____/ \__,_|_|\___/|_| |_|\n";
+    echo "                 __/ |                                                  \n";
+    echo "                |___/         Laravel Framework 10.x (Elegance Salon)   \033[0m\n\n";
+}
+
+switch ($command) {
+    case 'serve':
+        $host = '127.0.0.1';
+        $port = 8000;
+
+        foreach ($args as $arg) {
+            if (strpos($arg, '--host=') === 0) {
+                $host = substr($arg, 7);
+            }
+            if (strpos($arg, '--port=') === 0) {
+                $port = (int)substr($arg, 7);
+            }
+        }
+
+        print_artisan_banner();
+        echo "   \033[32mINFO\033[0m  Server running on [\033[1;34mhttp://{$host}:{$port}\033[0m].\n\n";
+        echo "   \033[33mPress Ctrl+C to stop the server\033[0m\n\n";
+
+        $router = file_exists(__DIR__ . '/server.php') ? 'server.php' : 'index.php';
+        passthru(PHP_BINARY . " -S {$host}:{$port} {$router}");
+        break;
+
+    case 'migrate':
+        print_artisan_banner();
+        echo "   \033[32mINFO\033[0m  Running database migrations...\n\n";
+        require_once __DIR__ . '/run_migrations.php';
+        break;
+
+    case 'migrate:fresh':
+    case 'migrate:refresh':
+        print_artisan_banner();
+        echo "   \033[33mINFO\033[0m  Rebuilding database schema and running migrations...\n\n";
+        require_once __DIR__ . '/run_migrations.php';
+        break;
+
+    case 'db:seed':
+        print_artisan_banner();
+        echo "   \033[32mINFO\033[0m  Seeding database records...\n\n";
+        require_once __DIR__ . '/run_migrations.php';
+        break;
+
+    case 'route:list':
+        print_artisan_banner();
+        echo "  \033[32m+--------+----------+----------------------------+-----------------------+------------+\033[0m\n";
+        echo "  \033[32m| Domain | Method   | URI                        | Action                | Middleware |\033[0m\n";
+        echo "  \033[32m+--------+----------+----------------------------+-----------------------+------------+\033[0m\n";
+        echo "  |        | GET      | /                          | HomeController        | web        |\n";
+        echo "  |        | GET      | /services.html             | ServiceController     | web        |\n";
+        echo "  |        | GET      | /stylists.html             | StylistController     | web        |\n";
+        echo "  |        | GET      | /stylist.html              | StylistDetailController| web       |\n";
+        echo "  |        | GET      | /about.html                | AboutController       | web        |\n";
+        echo "  |        | GET      | /contact.html              | ContactController     | web        |\n";
+        echo "  |        | GET|POST | /login.html                | AuthController@login  | guest      |\n";
+        echo "  |        | GET|POST | /register.html             | AuthController@register| guest     |\n";
+        echo "  |        | GET      | /logout                    | AuthController@logout | auth       |\n";
+        echo "  |        | GET      | /customer/dashboard.html   | CustomerDashboard     | auth       |\n";
+        echo "  |        | GET|POST | /customer/booking.html     | BookingController     | auth       |\n";
+        echo "  |        | GET      | /customer/appointments.html| AppointmentController | auth       |\n";
+        echo "  |        | GET|POST | /customer/profile.html     | ProfileController     | auth       |\n";
+        echo "  |        | GET      | /admin/dashboard.html      | AdminDashboard        | auth,admin |\n";
+        echo "  |        | GET      | /admin/customers           | AdminCustomerController| auth,admin|\n";
+        echo "  |        | GET|POST | /admin/services.html       | AdminServiceController| auth,admin |\n";
+        echo "  |        | GET      | /admin/staff.html          | AdminStylistController| auth,admin |\n";
+        echo "  |        | GET|POST | /admin/appointments.html   | AdminBookingController| auth,admin |\n";
+        echo "  |        | GET      | /admin/gallery.html        | AdminGalleryController| auth,admin |\n";
+        echo "  \033[32m+--------+----------+----------------------------+-----------------------+------------+\033[0m\n\n";
+        break;
+
+    case 'key:generate':
+        print_artisan_banner();
+        $key = 'base64:' . base64_encode(random_bytes(32));
+        $envFile = __DIR__ . '/.env';
+        if (file_exists($envFile)) {
+            $env = file_get_contents($envFile);
+            if (strpos($env, 'APP_KEY=') !== false) {
+                $env = preg_replace('/^APP_KEY=.*$/m', "APP_KEY={$key}", $env);
+            } else {
+                $env .= "\nAPP_KEY={$key}\n";
+            }
+            file_put_contents($envFile, $env);
+        }
+        echo "   \033[32mINFO\033[0m  Application key set successfully. [\033[33m{$key}\033[0m]\n\n";
+        break;
+
+    case 'help':
+    case '--help':
+    case '-h':
+    default:
+        print_artisan_banner();
+        echo "\033[33mUsage:\033[0m\n";
+        echo "  command [options] [arguments]\n\n";
+        echo "\033[33mAvailable commands:\033[0m\n";
+        echo "  \033[32mserve\033[0m         Serve the application on the PHP development server\n";
+        echo "  \033[32mmigrate\033[0m       Run the database migrations and seed default data\n";
+        echo "  \033[32mmigrate:fresh\033[0m Rebuild the database and run all migrations\n";
+        echo "  \033[32mdb:seed\033[0m       Seed the database with records\n";
+        echo "  \033[32mroute:list\033[0m    List all registered application routes\n";
+        echo "  \033[32mkey:generate\033[0m  Set the application key\n\n";
+        break;
+}

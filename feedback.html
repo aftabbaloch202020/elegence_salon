@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guest Review & Feedback — Elegance Salon</title>
+  <meta name="description" content="Share your experience at Elegance Salon. We value guest notes to continuously refine our service and treatment standards.">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css"><link rel="stylesheet" href="css/dashboard.css"><link rel="stylesheet" href="css/responsive.css">
+</head>
+<body data-page="feedback-public">
+  <div class="section">
+    <div class="container" style="max-width:640px">
+      <div style="text-align:center; margin-bottom:28px">
+        <span class="eyebrow">Guest Notes</span>
+        <h1>Share Your Experience</h1>
+        <p style="font-size:1.02rem">Your thoughts help us maintain the highest standard of atelier care.</p>
+      </div>
+
+      <form class="card panel" id="feedback-form" style="padding:32px">
+        <div class="field"><label for="fb-name">Your Full Name</label><input id="fb-name" required placeholder="Maya Ahmed"><div class="field-error">Required</div></div>
+        <div class="field"><label for="fb-email">Email Address</label><input id="fb-email" type="email" required placeholder="name@example.com"><div class="field-error">Required</div></div>
+        <div class="field"><label for="fb-apt">Appointment Reference (Optional)</label><input id="fb-apt" placeholder="e.g. APT-1024"></div>
+        <div class="field"><label for="fb-service">Service Received</label><select id="fb-service" required></select></div>
+        <div class="field">
+          <label for="fb-rating">Overall Rating</label>
+          <select id="fb-rating">
+            <option value="5">★★★★★ 5 — Exceptional Experience</option>
+            <option value="4">★★★★☆ 4 — Lovely Visit</option>
+            <option value="3">★★★☆☆ 3 — Good</option>
+            <option value="2">★★☆☆☆ 2 — Needs Improvement</option>
+            <option value="1">★☆☆☆☆ 1 — Poor</option>
+          </select>
+        </div>
+        <div class="field"><label for="fb-msg">Your Feedback & Review</label><textarea id="fb-msg" required placeholder="Describe your consultation, environment, and treatment results..."></textarea><div class="field-error">Required</div></div>
+        <button class="btn btn-gold btn-block" type="submit" style="margin-top:12px"><i class="fa-solid fa-star"></i> Submit Feedback</button>
+      </form>
+    </div>
+  </div>
+  <script src="js/mock-data.js"></script><script src="js/store.js"></script><script src="js/app.js"></script><script src="js/layout.js"></script><script src="js/main.js"></script>
+  <script>Layout.public("feedback");</script>
+</body>
+</html>
